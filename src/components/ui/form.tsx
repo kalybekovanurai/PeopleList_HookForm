@@ -4,8 +4,8 @@ import { Button } from "./button";
 import { Input } from "./input";
 
 const genderOptions = [
-  { label: "Мужчина", value: "М" },
-  { label: "Женщина", value: "Ж" },
+  { label: "Мужчина", value: "Мужчина" },
+  { label: "Женщина", value: "Женщина" },
 ];
 
 function AppForm({
@@ -19,20 +19,17 @@ function AppForm({
   addButtonText: string;
   cancelButtonText: string;
   defaultValue?: { name: string; age: string; gender: string };
-  onSubmit: (param) => void;
+  onSubmit: (param:any) => void;
 }) {
   const [name, setName] = useState(defaultValue?.name || "");
   const [age, setAge] = useState(defaultValue?.age || "");
-  const [gender, setGender] = useState(defaultValue?.gender || "M");
+  const [gender, setGender] = useState(defaultValue?.gender || "Мужчина");
 
   function nameValueHandler(e: React.ChangeEvent<HTMLInputElement>) {
     setName(e.target.value);
   }
   function ageValueHandler(e: React.ChangeEvent<HTMLInputElement>) {
     setAge(e.target.value);
-  }
-  function selectGender(e: React.ChangeEvent<HTMLSelectElement>) {
-    setGender(e.target.value);
   }
 
   function onSubmitHandler(e: React.FormEvent<HTMLFormElement>) {
@@ -42,6 +39,10 @@ function AppForm({
       age,
       gender,
     });
+  }
+
+  function selectGender(value: string) {
+    setGender(value);
   }
 
   return (

@@ -16,9 +16,9 @@ interface AppsSelectProps {
   placeholder: string;
 }
 
-function AppSelect({ options, label, placeholder, selected }: AppsSelectProps) {
+function AppSelect({ options, label, placeholder, selected, onChange }: AppsSelectProps) {
   return (
-    <Select defaultValue={selected}>
+    <Select value={selected} onValueChange={onChange}>
       <SelectTrigger>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
