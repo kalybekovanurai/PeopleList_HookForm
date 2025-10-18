@@ -5,6 +5,13 @@ import AppForm from "@/components/ui/form";
 import { useNavigate, useParams } from "react-router";
 import type { RootState } from "../store";
 
+export interface PersonData {
+  name: string;
+  age: string;
+  gender: string;
+}
+
+
 function EditFormPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -14,7 +21,7 @@ function EditFormPage() {
     state.people.list.find((p) => p.id === Number(id))
   );
 
-  function handleEdit(data) {
+  function handleEdit(data: PersonData) {
     dispatch(editPerson({ ...data, id: Number(id) }));
     navigate("/home");
   }
